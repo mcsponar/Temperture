@@ -1,12 +1,12 @@
 package domain;
 
-public final class CelciusTempertureType extends TempertureType {
+public final class CelciusTemperatureType extends TemperatureType {
 
 	
 	private static final String SYMBOL = "C";
 	private static final String CELCIUS = "Celcius";
 
-	public CelciusTempertureType(double value) {
+	public CelciusTemperatureType(double value) {
 		super(CELCIUS, SYMBOL, value);
 		
 	}

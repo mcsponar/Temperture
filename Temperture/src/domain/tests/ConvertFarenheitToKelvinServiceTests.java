@@ -12,19 +12,19 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 import domain.ConvertFarenheitToKelvinService;
-import domain.FarenheitTempertureType;
-import domain.KelvinTempertureType;
-import domain.TempertureType;
+import domain.FarenheitTemperatureType;
+import domain.KelvinTemperatureType;
+import domain.TemperatureType;
 
 @RunWith(value = Parameterized.class)
 public class ConvertFarenheitToKelvinServiceTests {
 	
 	private ConvertFarenheitToKelvinService service;
 	
-	private TempertureType temperture;
-	private TempertureType expected;
+	private TemperatureType temperture;
+	private TemperatureType expected;
 	
-	public ConvertFarenheitToKelvinServiceTests(TempertureType temperture, TempertureType expected){
+	public ConvertFarenheitToKelvinServiceTests(TemperatureType temperture, TemperatureType expected){
 		this.temperture = temperture;
 		this.expected = expected;
 	}
@@ -40,19 +40,19 @@ public class ConvertFarenheitToKelvinServiceTests {
 	@Parameters(name = "{index}: convert({0})={1}")
 	public static Iterable<Object[]> data1() {
 		return Arrays.asList(new Object[][] { 
-			{ new FarenheitTempertureType(-459.67), new KelvinTempertureType(0)}, 
-			{ new FarenheitTempertureType(-40), new KelvinTempertureType(233.15)}, 
-			{ new FarenheitTempertureType(-30), new KelvinTempertureType(238.7055)}, 
-			{ new FarenheitTempertureType(0), new KelvinTempertureType(255.3722)},
-			{ new FarenheitTempertureType(30), new KelvinTempertureType(272.0388)},
-			{ new FarenheitTempertureType(100), new KelvinTempertureType(310.9277)},
-			{ new FarenheitTempertureType(1000), new KelvinTempertureType(810.9277)}
+			{ new FarenheitTemperatureType(-459.67), new KelvinTemperatureType(0)}, 
+			{ new FarenheitTemperatureType(-40), new KelvinTemperatureType(233.15)}, 
+			{ new FarenheitTemperatureType(-30), new KelvinTemperatureType(238.7055)}, 
+			{ new FarenheitTemperatureType(0), new KelvinTemperatureType(255.3722)},
+			{ new FarenheitTemperatureType(30), new KelvinTemperatureType(272.0388)},
+			{ new FarenheitTemperatureType(100), new KelvinTemperatureType(310.9277)},
+			{ new FarenheitTemperatureType(1000), new KelvinTemperatureType(810.9277)}
 		});
 	}
 
 	@Test
 	public final void test() {
-		TempertureType actual =  service.Convert((FarenheitTempertureType) temperture);
+		TemperatureType actual =  service.Convert((FarenheitTemperatureType) temperture);
 		//System.out.println(actual.getValue() + " " + expected.getValue());
 		assertTrue(expected.equals(actual));
 	}

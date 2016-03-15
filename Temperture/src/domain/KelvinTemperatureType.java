@@ -1,12 +1,12 @@
 package domain;
 
-public final class KelvinTempertureType extends TempertureType {
+public final class KelvinTemperatureType extends TemperatureType {
 
 	
 	private static final String SYMBOL = "K";
 	private static final String KELVIN = "Kelvin";
 
-	public KelvinTempertureType(double value) {
+	public KelvinTemperatureType(double value) {
 		super(KELVIN, SYMBOL, value);
 		
 	}

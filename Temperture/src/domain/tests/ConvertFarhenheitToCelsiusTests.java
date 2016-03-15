@@ -1,10 +1,10 @@
 package domain.tests;
 import java.util.Arrays;
 
-import domain.CelciusTempertureType;
+import domain.CelciusTemperatureType;
 import domain.ConvertFahrenheitToCelsiusService;
-import domain.FarenheitTempertureType;
-import domain.TempertureType;
+import domain.FarenheitTemperatureType;
+import domain.TemperatureType;
 import static org.junit.Assert.*;
 
 import org.junit.After;
@@ -18,11 +18,11 @@ import org.junit.runners.Parameterized.Parameters;
 public class ConvertFarhenheitToCelsiusTests {
 
 	private ConvertFahrenheitToCelsiusService service;
-	private TempertureType temperture;
-	private TempertureType expected;
+	private TemperatureType temperture;
+	private TemperatureType expected;
 	
 	
-	public ConvertFarhenheitToCelsiusTests(TempertureType temperture, TempertureType expected){
+	public ConvertFarhenheitToCelsiusTests(TemperatureType temperture, TemperatureType expected){
 		this.temperture = temperture;
 		this.expected = expected;
 	}
@@ -40,19 +40,19 @@ public class ConvertFarhenheitToCelsiusTests {
 	@Parameters(name = "{index}: convert({0})={1}")
 	public static Iterable<Object[]> data1() {
 		return Arrays.asList(new Object[][] { 
-			{ new FarenheitTempertureType(-10), new CelciusTempertureType(-23.3333)}, 
-			{ new FarenheitTempertureType(0), new CelciusTempertureType(-17.7777)}, 
-			{ new FarenheitTempertureType(10), new CelciusTempertureType(-12.2222)}, 
-			{ new FarenheitTempertureType(30), new CelciusTempertureType(-1.1111)},
-			{ new FarenheitTempertureType(-30), new CelciusTempertureType(-34.4444)},
-			{ new FarenheitTempertureType(100), new CelciusTempertureType(37.7777)},
-			{ new FarenheitTempertureType(1000), new CelciusTempertureType(537.7777)}
+			{ new FarenheitTemperatureType(-10), new CelciusTemperatureType(-23.3333)}, 
+			{ new FarenheitTemperatureType(0), new CelciusTemperatureType(-17.7777)}, 
+			{ new FarenheitTemperatureType(10), new CelciusTemperatureType(-12.2222)}, 
+			{ new FarenheitTemperatureType(30), new CelciusTemperatureType(-1.1111)},
+			{ new FarenheitTemperatureType(-30), new CelciusTemperatureType(-34.4444)},
+			{ new FarenheitTemperatureType(100), new CelciusTemperatureType(37.7777)},
+			{ new FarenheitTemperatureType(1000), new CelciusTemperatureType(537.7777)}
 		});
 	}
 	
 	@Test
 	public void test_convert() {
-		TempertureType actual =  service.Convert((FarenheitTempertureType) temperture);
+		TemperatureType actual =  service.Convert((FarenheitTemperatureType) temperture);
 		System.out.println(actual.getValue() + " " + expected.getValue());
 		assertTrue(expected.equals(actual));
 	}

@@ -1,12 +1,12 @@
 package domain;
 
-public final class FarenheitTempertureType extends TempertureType {
+public final class FarenheitTemperatureType extends TemperatureType {
 
 	
 	private static final String SYMBOL = "F";
 	private static final String FARENHEIT = "Farenheit";
 
-	public FarenheitTempertureType(double value) {
+	public FarenheitTemperatureType(double value) {
 		super(FARENHEIT, SYMBOL, value);
 		
 	}
