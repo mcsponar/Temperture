@@ -1,7 +1,10 @@
 package domain.tests;
 import java.util.Arrays;
 
+import domain.CelciusTempertureType;
 import domain.ConvertFahrenheitToCelsiusService;
+import domain.FarenheitTempertureType;
+import domain.TempertureType;
 import static org.junit.Assert.*;
 
 import org.junit.After;
@@ -15,13 +18,11 @@ import org.junit.runners.Parameterized.Parameters;
 public class ConvertFarhenheitToCelsiusTests {
 
 	private ConvertFahrenheitToCelsiusService service;
-	private final double DELTA = .01;
-	
-	private int temperture;
-	private double expected;
+	private TempertureType temperture;
+	private TempertureType expected;
 	
 	
-	public ConvertFarhenheitToCelsiusTests(int temperture, double expected){
+	public ConvertFarhenheitToCelsiusTests(TempertureType temperture, TempertureType expected){
 		this.temperture = temperture;
 		this.expected = expected;
 	}
@@ -39,19 +40,21 @@ public class ConvertFarhenheitToCelsiusTests {
 	@Parameters(name = "{index}: convert({0})={1}")
 	public static Iterable<Object[]> data1() {
 		return Arrays.asList(new Object[][] { 
-			{ -10, -23.33}, 
-			{ 0, -17.78}, 
-			{ 10, -12.22}, 
-			{ 30, -1.11},
-			{ -30, -34.44},
-			{ 100, 37.78},
-			{ 1000, 537.78}
+			{ new FarenheitTempertureType(-10), new CelciusTempertureType(-23.3333)}, 
+			{ new FarenheitTempertureType(0), new CelciusTempertureType(-17.7777)}, 
+			{ new FarenheitTempertureType(10), new CelciusTempertureType(-12.2222)}, 
+			{ new FarenheitTempertureType(30), new CelciusTempertureType(-1.1111)},
+			{ new FarenheitTempertureType(-30), new CelciusTempertureType(-34.4444)},
+			{ new FarenheitTempertureType(100), new CelciusTempertureType(37.7777)},
+			{ new FarenheitTempertureType(1000), new CelciusTempertureType(537.7777)}
 		});
 	}
 	
 	@Test
 	public void test_convert() {
-		assertEquals(expected, service.Convert(temperture), DELTA);
+		TempertureType actual =  service.Convert((FarenheitTempertureType) temperture);
+		System.out.println(actual.getValue() + " " + expected.getValue());
+		assertTrue(expected.equals(actual));
 	}
 	
 
