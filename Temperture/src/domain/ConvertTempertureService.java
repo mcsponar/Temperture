@@ -1,9 +1,7 @@
 package domain;
 
-public abstract class ConvertTempertureService<TInput extends TempertureType, TOutput extends TempertureType> {
+public abstract class ConvertTempertureService {
 
-	public abstract TOutput Convert(TInput temperture);
-
-	
+	public abstract double Convert(int temperture);
 	
 }

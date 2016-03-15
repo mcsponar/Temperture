@@ -1,12 +1,12 @@
 package domain;
 
-public class ConvertFahrenheitToCelsiusService extends ConvertTempertureService<FarenheitTempertureType, CelciusTempertureType> {
+public class ConvertFahrenheitToCelsiusService extends ConvertTempertureService {
 
 	private final int OFFSET = 32;
 	private final double CONVERSION = 5.0 / 9.0 ;
 	
-	public CelciusTempertureType Convert(FarenheitTempertureType temperture) {
-		return new CelciusTempertureType((temperture.getValue() - OFFSET) * CONVERSION);
+	public double Convert(int temperture) {
+		return (temperture - OFFSET) * CONVERSION;
 	}
 
 }
